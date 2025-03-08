@@ -1,0 +1,24 @@
+Setup new instance with jenkins installation
+Launch instance -> take ubantu ami -> add all trafic -> launch instace
+command:-
+A] go on google search jenkins install on ubantu then copy and past commands for install java and jenkins
+1) install java ->
+sudo apt update
+sudo apt install fontconfig openjdk-17-jre
+java -version
+openjdk version "17.0.13" 2024-10-15
+OpenJDK Runtime Environment (build 17.0.13+11-Debian-2)
+OpenJDK 64-Bit Server VM (build 17.0.13+11-Debian-2, mixed mode, sharing)
+2) install jenkins ->
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+B] go google hit public ip http://public-ip:8080 it show unlock page 
+Then copy the red text and past in the instance server with command
+   sudo cat past-red-text
+It gives the password then copy it and past in jenkins unlock screen
+Then install all plugins and then get started the task on jenkins
