@@ -3,6 +3,9 @@ launch instace -> all traffic -> launch
 #sudo -i 
 # apt update -y
 #apt install docker -y
+#systemctl start docker
+#systemctl enable docker
+#mkdir wordpress
 #cd wordpress
 #touch wp-config.php
 # #vi wp-config.php
