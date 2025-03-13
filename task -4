@@ -1,0 +1,113 @@
+write a Docker file for wordpress
+launch instace -> all traffic -> launch
+#sudo -i 
+# apt update -y
+#apt install docker -y
+#cd wordpress
+#touch wp-config.php
+# #vi wp-config.php
+<?php
+/**
+ * The base configuration for WordPress.
+ *
+ * This file contains the following settings:
+ *
+ * * Database settings
+ * * Secret keys
+ * * WordPress language
+ * * ABSPATH
+ *
+ * @link https://codex.wordpress.org/Editing_wp-config.php
+ *
+ * @package WordPress
+ */
+
+// ** Database settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'your_database_name' );
+
+/** MySQL database username */
+define( 'DB_USER', 'your_database_user' );
+
+/** MySQL database password */
+define( 'DB_PASSWORD', 'your_database_password' );
+
+/** MySQL hostname */
+define( 'DB_HOST', 'localhost' );
+/** Database Charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8' );
+
+/** The Database Collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
+
+/**#@+
+ * Authentication Unique Keys and Salts.
+ *
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to log in again.
+ *
+ * @since 2.6.0
+ */
+define( 'AUTH_KEY',         'your unique phrase' );
+define( 'SECURE_AUTH_KEY',  'your unique phrase' );
+define( 'LOGGED_IN_KEY',    'your unique phrase' );
+define( 'NONCE_KEY',        'your unique phrase' );
+define( 'AUTH_SALT',        'your unique phrase' );
+define( 'SECURE_AUTH_SALT', 'your unique phrase' );
+define( 'LOGGED_IN_SALT',   'your unique phrase' );
+define( 'NONCE_SALT',       'your unique phrase' );
+
+/**#@-*/
+
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each a unique prefix.
+ * Only numbers, letters, and underscores please!
+ */
+$table_prefix = 'wp_';
+
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ *
+ * For information on other constants that can be used for debugging, visit:
+ * https://codex.wordpress.org/Debugging_in_WordPress
+ */
+define( 'WP_DEBUG', false );
+
+/* That's all, stop editing! Happy blogging. */
+/** Absolute path to the WordPress directory. */
+if ( !defined( 'ABSPATH' ) )
+        define( 'ABSPATH', __DIR__ . '/' );
+
+/** Sets up WordPress vars and included files. */
+require_once( ABSPATH . 'wp-settings.php' );
+
+
+
+#vim Dockerfile
+
+FROM wordpress:latest
+
+WORKDIR /var/www/html
+
+# Copy wp-config.php to the correct location
+COPY wp-config.php /var/www/html/wp-config.php
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y curl && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set the default command to run the WordPress application
+CMD ["apache2-foreground"]
+
+
+#docker build . -t wordpress:v1
+#docker images
+#docker run -d -p 8080:80 wordpress
+#docker ps
+copy ip of instace and past it on browser with :8080
