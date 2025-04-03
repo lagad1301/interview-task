@@ -114,3 +114,14 @@ CMD ["apache2-foreground"]
 #docker run -d -p 8080:80 wordpress
 #docker ps
 copy ip of instace and past it on browser with :8080
+
+
+
+
+
+
+
+
+
+
+
