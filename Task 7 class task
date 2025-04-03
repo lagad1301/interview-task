@@ -1,0 +1,19 @@
+3-tier using terraform
+launch instace ---
+Install git and docker -> 
+command ---- yum update -y
+             yum install git 
+             yum install docker 
+             systemctl start docker 
+             systemctl enable docker
+   
+             git config --global user.name "lagad1301"
+             git config --global user.email "lagadvanchita@gmail.com"
+             git clone https://github.com/abhipraydhoble/ThreeTier-Using-Docker.git
+             ls 
+             cd ThreeTier-Using-Docker/
+             ls
+             cd Database/
+             docker build . -t my-mysql-db 
+             docker run -d  -p 3306:3306 my-mysql-db
+             docker inspect 2401121ecaaa
