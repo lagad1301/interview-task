@@ -2,6 +2,12 @@ TO-DO LIST
 launch instace----install jenkins---->access jeinkins---->create pipeline ----->
 configure git and aws
 
+Open Jenkins and create a new Pipeline Job.
+In the Pipeline section, select Pipeline script from SCM.
+Choose Git as your SCM and enter your repository URL.
+In the Script Path, specify the location of the Jenkinsfile in your repository 
+Jenkins Credentials:
+
 files--->
 ***app.js***
 
