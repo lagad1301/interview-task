@@ -16,4 +16,16 @@ command ---- yum update -y
              cd Database/
              docker build . -t my-mysql-db 
              docker run -d  -p 3306:3306 my-mysql-db
-             docker inspect 2401121ecaaa
+             docker inspect 2401121ecaaa (copy ip adress)
+             cd ..
+             cd Backend/
+             ls
+             vi context.xml    (edit and put ip of container)
+             docker build . -t my-backend-app
+             docker run -d  -p 8080:8080 my-backend-app
+             cd ..
+            cd Frontend/
+            ls
+            vi index.html    (edit and put instance public ip)
+            docker build . -t my-frontend-app
+            docker run -d  -p 80:80 my-frontend-app
