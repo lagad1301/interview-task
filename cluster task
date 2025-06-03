@@ -1,0 +1,23 @@
+ yum install docker  -y
+     systemctl start docker
+     systemctl enable docker
+     touch index.html
+     nano index.html 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Kubernetes Web App</title>
+</head>
+<body>
+    <h1>Hello from Kubernetes!</h1>
+</body>
+</html>
+     nano Dockerfile
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/index.html
+     docker build . -t nginx-web-app:v1
+     docker run -d  -p 80:80 nginx-web-app:v1
+     cat index.html 
+     cat Dockerfile 
+     history
